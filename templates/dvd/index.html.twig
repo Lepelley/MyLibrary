@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Liste des DVDs
+{% endblock %}
+
+{% block body %}
+    <div class="container mt-2">
+        <h1>Liste des DVDs</h1>
+
+        <a href="{{ path('dvd_create') }}" class="btn btn-primary mt-2">Ajouter un DVD</a>
+
+        <table class="table table-hover table-striped mt-2">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">Nom</th>
+                <th scope="col">Type</th>
+                <th scope="col">Emplacement</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for dvd in dvds %}
+                <tr>
+                    <td>{{ dvd.title }}</td>
+                    <td>{{ dvd.type.name }}</td>
+                    <td>{{ dvd.comment }}</td>
+                    <td>
+                        <a class="btn btn-primary" href="{{ path('dvd_edit', {id: dvd.id}) }}">
+                            Modifier
+                        </a>
+                        <a href="{{ path('dvd_delete', {id: dvd.id}) }}" class="btn btn-danger"
+                           onclick="return confirm('Voulez-vous supprimer le DVD &laquo; {{ dvd.title }} &raquo; ?')">
+                            Supprimer
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

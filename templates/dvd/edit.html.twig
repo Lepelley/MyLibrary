@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Modifier le DVD &laquo; {{ dvd.title }} &raquo;
+{% endblock %}
+
+{% block body %}
+    <div class="container mt-2">
+        <h1>Modifier le DVD &laquo; {{ dvd.title }} &raquo;</h1>
+
+        {{ form_start(form) }}
+
+        {{ form_widget(form) }}
+
+        <button type="submit" class="btn btn-primary">Modifier le DVD</button>
+
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
+
