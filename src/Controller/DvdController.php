@@ -23,8 +23,10 @@ class DvdController extends AbstractController
      */
     public function index(DvdRepository $repository): Response
     {
+        $dvds = $repository->findAll();
         return $this->render('dvd/index.html.twig', [
-            'dvds' => $repository->findAll(),
+            'dvds' => $dvds,
+            'count_dvd' => count($dvds),
         ]);
     }
 
